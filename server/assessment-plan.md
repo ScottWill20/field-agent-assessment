@@ -7,7 +7,7 @@ _TODO_ Add time estimates to each of the top-level tasks
 
 ### HTTP Requests
 
-#### Find All Security Clearances
+#### Find All Security Clearances - DONE
 
 **Request**
 
