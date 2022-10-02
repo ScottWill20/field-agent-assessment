@@ -6,11 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class SecurityClearanceJdbcTemplateRepositoryTest {
 
+    final static int NEXT_ID = 3;
     @Autowired
     SecurityClearanceJdbcTemplateRepository repository;
 
@@ -20,6 +23,14 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
     @BeforeEach
     void setup() {
         knownGoodState.set();
+    }
+
+    @Test
+    void shouldFindAll() {
+        List<SecurityClearance> securityClearances = repository.findAll();
+        assertNotNull(securityClearances);
+
+        assertTrue(securityClearances.size() >= 2 && securityClearances.size() <= 5);
     }
 
     @Test
@@ -33,7 +44,33 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
         actual = repository.findById(2);
         assertEquals(topSecret, actual);
 
-        actual = repository.findById(3);
-        assertEquals(null, actual);
+        actual = repository.findById(6);
+        assertNull(actual);
+    }
+
+    @Test
+    void shouldAdd() {
+        SecurityClearance securityClearance = makeSecurityClearance();
+        SecurityClearance actual = repository.add(securityClearance);
+        assertNotNull(actual);
+        assertEquals(NEXT_ID, actual.getSecurityClearanceId());
+    }
+
+
+    @Test
+    void shouldUpdate() {
+        SecurityClearance securityClearance = makeSecurityClearance();
+        securityClearance.setSecurityClearanceId(2);
+        assertTrue(repository.update(securityClearance));
+        securityClearance.setSecurityClearanceId(12);
+        assertFalse(repository.update(securityClearance));
+    }
+
+
+
+    private SecurityClearance makeSecurityClearance() {
+        SecurityClearance securityClearance = new SecurityClearance();
+        securityClearance.setName("Test");
+        return securityClearance;
     }
 }

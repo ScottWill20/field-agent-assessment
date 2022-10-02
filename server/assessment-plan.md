@@ -19,7 +19,7 @@ GET http://localhost:8080/api/security/clearance HTTP/1.1
 
 * Success: 200 OK
 
-#### Find a Security Clearance By Its Identifier
+#### Find a Security Clearance By Its Identifier - DONE
 
 **Request**
 
@@ -32,7 +32,7 @@ GET http://localhost:8080/api/security/clearance/1 HTTP/1.1
 * Success: 200 OK
 * Failure (cannot be found): 404 Not Found
 
-#### Add a Security Clearance
+#### Add a Security Clearance - DONE
 
 **Request**
 
@@ -50,7 +50,7 @@ Content-Type: application/json
 * Success: 201 Created
 * Failure (validation errors): 400 Bad Request
 
-#### Update an Existing Security Clearance
+#### Update an Existing Security Clearance - DONE
 
 **Request**
 
@@ -70,7 +70,7 @@ Content-Type: application/json
 * Failure (validation errors): 400 Bad Request
 * Failure (route path ID and request body ID don't match): 409 Conflict
 
-#### Delete a Security Clearance
+#### Delete a Security Clearance - DELETE
 
 **Request**
 
@@ -260,17 +260,17 @@ _Refer back to the "Spring Profiles, Error Handling, and CORS" lesson in the LMS
 
 ### Security Clearance
 
-* [ ] GET all security clearances
-* [ ] GET a security clearance by ID
-* [ ] For GET return a 404 if security clearance is not found
-* [ ] POST a security clearance
-* [ ] For POST return a 400 if the security clearance fails one of the domain rules
-    * [ ] Security clearance name is required
-    * [ ] Name cannot be duplicated
-* [ ] PUT an existing security clearance
-* [ ] For PUT return a 400 if the security clearance fails one of the domain rules
-* [ ] DELETE a security clearance that is not in use by ID
-* [ ] For DELETE return a 404 if the security clearance is not found
+* [X] GET all security clearances
+* [X] GET a security clearance by ID
+* [X] For GET return a 404 if security clearance is not found
+* [X] POST a security clearance
+* [X] For POST return a 400 if the security clearance fails one of the domain rules
+    * [X] Security clearance name is required
+    * [X] Name cannot be duplicated
+* [X] PUT an existing security clearance
+* [X] For PUT return a 400 if the security clearance fails one of the domain rules
+* [X] DELETE a security clearance that is not in use by ID
+* [X] For DELETE return a 404 if the security clearance is not found
 * [ ] For DELETE return a 400 if the security clearance is in use
 
 ### Alias

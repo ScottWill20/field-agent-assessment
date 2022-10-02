@@ -107,6 +107,12 @@ begin
 	alter table agency auto_increment = 1;
     delete from agent;
     alter table agent auto_increment = 1;
+    delete from security_clearance;
+    alter table security_clearance auto_increment = 1;
+    
+    insert into security_clearance values
+	(1, 'Secret'),
+    (2, 'Top Secret');
     
     insert into agency(agency_id, short_name, long_name) values
         (1, 'ACME', 'Agency to Classify & Monitor Evildoers'),
@@ -134,6 +140,13 @@ begin
 		('Ulises','B','Muhammad','2008-04-01',80),
 		('Phylys','Y','Howitt','1979-03-28',68);
         
+-- 	insert into alias (`name`, persona, agent_id) 
+--     select (concat(agent.first_name, " ", agent.middle_name, " ",agent.last_name), 
+-- 			persona, agent.agent_id)
+-- 	from agent
+--     inner join alias
+--     where alias.agent_id = agent.agent_id
+        
 	insert into agency_agent 
 		(agency_id, agent_id, identifier, security_clearance_id, activation_date)
     select
@@ -151,7 +164,3 @@ end //
 -- 4. Change the statement terminator back to the original.
 delimiter ;
 
--- data
-insert into security_clearance values
-	(1, 'Secret'),
-    (2, 'Top Secret');
