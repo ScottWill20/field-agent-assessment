@@ -107,6 +107,17 @@ public class SecurityClearanceServiceTest {
     }
 
     @Test
+    void shouldNotDeleteWhenNotFound() {
+        SecurityClearance securityClearance = makeSecurityClearance();
+        securityClearance.setSecurityClearanceId(4);
+
+        when(repository.deleteById(securityClearance.getSecurityClearanceId())).thenReturn(false);
+
+        Result<SecurityClearance> actual = service.deleteById(securityClearance.getSecurityClearanceId());
+        assertEquals(ResultType.NOT_FOUND, actual.getType());
+    }
+
+    @Test
     void shouldDelete() {
         SecurityClearance securityClearance = makeSecurityClearance();
         securityClearance.setSecurityClearanceId(2);
