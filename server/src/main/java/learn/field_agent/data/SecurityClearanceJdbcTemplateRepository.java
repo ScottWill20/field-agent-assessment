@@ -1,6 +1,7 @@
 package learn.field_agent.data;
 
 import learn.field_agent.data.mappers.SecurityClearanceMapper;
+import learn.field_agent.domain.Result;
 import learn.field_agent.models.SecurityClearance;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -88,11 +89,22 @@ public class SecurityClearanceJdbcTemplateRepository implements SecurityClearanc
     @Override
     @Transactional
     public boolean deleteById(int securityClearanceId) {
+//        int count = jdbcTemplate.queryForObject(
+//                "select count(*) from agency_agent " +
+//                        "where security_clearance_id = ?;", Integer.class, securityClearanceId);
+//       if (count >= 1) {
+//
+//           return false;
+        // how do I write a delete method that processes more than just true or false? 3 outcomes expected in assessment requirements
+//       }
         return jdbcTemplate.update("delete from security_clearance " +
                 "where security_clearance_id = ? " +
                 "and security_clearance_id not in " +
-                "(select distinct security_clearance_id from agency_agent);", securityClearanceId) > 0;
+                "(select distinct security_clearance_id from agency_agent);",
+                securityClearanceId) > 0;
 
+        // this blocks any deletion from agency_agent where a security clearance @ securityClearanceId exists in the data layer
+        // likely preferred that this happens in service so the correct HTTP Status can be returned (400)
     }
 
 }

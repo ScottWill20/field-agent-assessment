@@ -275,15 +275,15 @@ _Refer back to the "Spring Profiles, Error Handling, and CORS" lesson in the LMS
 
 ### Alias
 
-* [ ] GET an agent record with aliases attached
-* [ ] POST an alias
-* [ ] For POST return a 400 if the alias fails one of the domain rules
-    * [ ] Name is required
-    * [ ] Persona is not required unless a name is duplicated. The persona differentiates between duplicate names.
-* [ ] PUT an alias
-* [ ] For PUT return a 400 if the alias fails one of the domain rules
-* [ ] DELETE an alias by ID
-* [ ] For DELETE Return a 404 if the alias is not found
+* [X] GET an agent record with aliases attached
+* [X] POST an alias
+* [X] For POST return a 400 if the alias fails one of the domain rules
+    * [X] Name is required
+    * [X] Persona is not required unless a name is duplicated. The persona differentiates between duplicate names.
+* [X] PUT an alias
+* [X] For PUT return a 400 if the alias fails one of the domain rules
+* [X] DELETE an alias by ID
+* [X] For DELETE Return a 404 if the alias is not found
 
 ### Global Error Handling
 
