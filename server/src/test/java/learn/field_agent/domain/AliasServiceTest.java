@@ -94,6 +94,23 @@ public class AliasServiceTest {
         assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
+    @Test
+    void shouldNotDeleteWhenInvalid() {
+        Alias alias = makeAlias();
+        alias.setAliasId(10);
+        when(repository.deleteById(10)).thenReturn(true);
+        assertTrue(service.deleteById(10));
+    }
+
+    @Test
+    void shouldDelete() {
+        Alias alias = makeAlias();
+        alias.setAliasId(1);
+        when(repository.deleteById(1)).thenReturn(true);
+        assertTrue(service.deleteById(1));
+
+    }
+
     Alias makeAlias() {
         Alias alias = new Alias();
         alias.setAliasId(1);
