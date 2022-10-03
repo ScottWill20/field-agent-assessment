@@ -1,6 +1,7 @@
 package learn.field_agent.controllers;
 
 import learn.field_agent.domain.Result;
+import learn.field_agent.domain.ResultType;
 import learn.field_agent.domain.SecurityClearanceService;
 import learn.field_agent.models.SecurityClearance;
 import org.springframework.http.HttpStatus;
@@ -61,10 +62,14 @@ public class SecurityClearanceController {
 
     @DeleteMapping("/{securityClearanceId}")
     public ResponseEntity<Void> deleteById(@PathVariable int securityClearanceId) {
-        if (!service.deleteById(securityClearanceId)) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        Result<SecurityClearance> result = service.deleteById(securityClearanceId);
+        if (result.getType() == ResultType.NOT_FOUND) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (result.getType() == ResultType.INVALID) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

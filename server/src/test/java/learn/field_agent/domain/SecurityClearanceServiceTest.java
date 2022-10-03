@@ -41,29 +41,32 @@ public class SecurityClearanceServiceTest {
 
     @Test
     void shouldNotAddWhenDuplicate() {
-        SecurityClearance expected = makeSecurityClearance();
-        SecurityClearance arg = makeSecurityClearance();
-        arg.setSecurityClearanceId(0);
+        SecurityClearance securityClearance = makeSecurityClearance();
+        securityClearance.setName("Duplicate");
+        when(repository.add(securityClearance)).thenReturn(securityClearance);
 
-        when(repository.add(arg)).thenReturn(expected);
-        Result<SecurityClearance> result = service.add(arg);
-        assertEquals(ResultType.SUCCESS, result.getType());
+        SecurityClearance mockSecClear = makeSecurityClearance();
+        mockSecClear.setName("Duplicate");
+        Result<SecurityClearance> result = service.add(mockSecClear);
 
-        assertEquals(expected, result.getPayload());
+        assertEquals(ResultType.INVALID, result.getType());
+
+        assertNull(result.getPayload());
     }
 
     @Test
     void shouldAdd() {
         SecurityClearance securityClearance = makeSecurityClearance();
         securityClearance.setSecurityClearanceId(0);
-        SecurityClearance mockSecClear = makeSecurityClearance();
-        mockSecClear.setSecurityClearanceId(0);
 
-        when(repository.add(securityClearance)).thenReturn(mockSecClear);
+        when(repository.add(securityClearance)).thenReturn(securityClearance);
+        SecurityClearance SecClear = makeSecurityClearance();
+        SecClear.setSecurityClearanceId(0);
+        SecClear.setName("Test");
 
         Result<SecurityClearance> actual = service.add(securityClearance);
         assertEquals(ResultType.SUCCESS, actual.getType());
-        assertEquals(mockSecClear, actual.getPayload());
+        assertEquals(securityClearance, actual.getPayload());
     }
 
     @Test
@@ -74,9 +77,9 @@ public class SecurityClearanceServiceTest {
         assertEquals(ResultType.INVALID, actual.getType());
 
         securityClearance = makeSecurityClearance();
-        securityClearance.setName("Test");
+        securityClearance.setName("Test Updated");
         actual = service.update(securityClearance);
-        assertEquals(ResultType.INVALID, actual.getType());
+        assertEquals(ResultType.NOT_FOUND, actual.getType());
 
     }
 

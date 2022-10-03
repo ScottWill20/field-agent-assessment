@@ -1,11 +1,13 @@
 package learn.field_agent.domain;
 
+import ch.qos.logback.core.joran.conditional.IfAction;
 import learn.field_agent.data.SecurityClearanceRepository;
-import learn.field_agent.models.Agent;
+import learn.field_agent.models.AgencyAgent;
 import learn.field_agent.models.SecurityClearance;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SecurityClearanceService {
@@ -59,8 +61,16 @@ public class SecurityClearanceService {
         return result;
     }
 
-    public boolean deleteById(int securityClearanceId) {
-        return repository.deleteById(securityClearanceId);
+    public Result<SecurityClearance> deleteById(int securityClearanceId) {
+        Result<SecurityClearance> result = new Result<>();
+
+        if (!repository.deleteById(securityClearanceId)) {
+            String msg = String.format("securityClearanceId: %s, not found", securityClearanceId);
+            result.addMessage(msg, ResultType.NOT_FOUND);
+            return result;
+        }
+
+        return result;
     }
 
     private Result<SecurityClearance> validate(SecurityClearance securityClearance) {

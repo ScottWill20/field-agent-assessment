@@ -51,6 +51,7 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
     @Test
     void shouldAdd() {
         SecurityClearance securityClearance = makeSecurityClearance();
+        securityClearance.setName("Super Top Secret");
         SecurityClearance actual = repository.add(securityClearance);
         assertNotNull(actual);
         assertEquals(NEXT_ID, actual.getSecurityClearanceId());
@@ -61,6 +62,7 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
     void shouldUpdate() {
         SecurityClearance securityClearance = makeSecurityClearance();
         securityClearance.setSecurityClearanceId(2);
+        securityClearance.setName("Top Secret Updated");
         assertTrue(repository.update(securityClearance));
         securityClearance.setSecurityClearanceId(12);
         assertFalse(repository.update(securityClearance));
@@ -70,7 +72,7 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
 
     private SecurityClearance makeSecurityClearance() {
         SecurityClearance securityClearance = new SecurityClearance();
-        securityClearance.setName("Test");
+        securityClearance.setName("Top Secret Updated");
         return securityClearance;
     }
 }

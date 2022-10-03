@@ -75,11 +75,21 @@ public class SecurityClearanceJdbcTemplateRepository implements SecurityClearanc
                 securityClearance.getSecurityClearanceId()) > 0;
     }
 
+//    @Override
+//    @Transactional
+//    public boolean deleteById(int securityClearanceId) {
+//        return jdbcTemplate.update("delete from security_clearance " +
+//                                "where security_clearance_id = ? " +
+//                "and security_clearance_id not in " +
+//                "(select distinct security_clearance_id from agency_agent);", securityClearanceId) > 0;
+//
+//    }
+
     @Override
     @Transactional
     public boolean deleteById(int securityClearanceId) {
         return jdbcTemplate.update("delete from security_clearance " +
-                                "where security_clearance_id = ? " +
+                "where security_clearance_id = ? " +
                 "and security_clearance_id not in " +
                 "(select distinct security_clearance_id from agency_agent);", securityClearanceId) > 0;
 

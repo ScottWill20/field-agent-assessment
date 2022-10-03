@@ -109,6 +109,8 @@ begin
     alter table agent auto_increment = 1;
     delete from security_clearance;
     alter table security_clearance auto_increment = 1;
+    delete from alias;
+    alter table alias auto_increment = 1;
     
     insert into security_clearance values
 	(1, 'Secret'),
@@ -140,12 +142,15 @@ begin
 		('Ulises','B','Muhammad','2008-04-01',80),
 		('Phylys','Y','Howitt','1979-03-28',68);
         
--- 	insert into alias (`name`, persona, agent_id) 
---     select (concat(agent.first_name, " ", agent.middle_name, " ",agent.last_name), 
--- 			persona, agent.agent_id)
--- 	from agent
---     inner join alias
---     where alias.agent_id = agent.agent_id
+	insert into alias 
+		(`name`, persona, agent_id) 
+	select 
+		concat(agent.first_name," ",agent.last_name), 
+		persona,
+		agent.agent_id
+	from agent
+	inner join alias
+	where alias.agent_id = agent.agent_id;
         
 	insert into agency_agent 
 		(agency_id, agent_id, identifier, security_clearance_id, activation_date)

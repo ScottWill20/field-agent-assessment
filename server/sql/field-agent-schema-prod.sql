@@ -101,7 +101,6 @@ insert into security_clearance values
 (1, 'Secret'),
 (2, 'Top Secret');
 
-
 insert into agency(agency_id, short_name, long_name) values
 	(1, 'ACME', 'Agency to Classify & Monitor Evildoers'),
 	(2, 'MASK', 'Mobile Armored Strike Kommand'),
@@ -128,13 +127,23 @@ values
 ('Ulises','B','Muhammad','2008-04-01',80),
 ('Phylys','Y','Howitt','1979-03-28',68);
 
--- insert into alias 
--- (`name`, persona, agent_id) 
--- select (concat(agent.first_name, " ", agent.middle_name, " ",agent.last_name), 
--- 		persona, agent.agent_id)
--- from agent
--- inner join alias
--- where alias.agent_id = agent.agent_id;
+insert into alias 
+(`name`, persona, agent_id) 
+select concat(agent.first_name," ",agent.last_name), 
+        persona,
+        agent.agent_id
+from agent
+inner join alias
+where alias.agent_id = agent.agent_id;
+
+-- insert into alias (`name`, persona, agent_id)
+-- values
+-- ("Hazel Sauven","Wolverine",1),
+-- ("Winn Puckrin","The Thing",3),
+-- ("Urban Carwithen","Mr. Fantastic",6),
+-- ("Urban Carwithen","Storm",6),
+-- ("Ulises Mihammad","Green Lantern",7);
+
 	
 insert into agency_agent 
 (agency_id, agent_id, identifier, security_clearance_id, activation_date)
