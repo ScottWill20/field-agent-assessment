@@ -16,4 +16,6 @@ public interface SecurityClearanceRepository {
 
     @Transactional
     boolean deleteById(int securityClearanceId);
+
+    int countClearancesInAgencyAgent(int securityClearanceId);
 }

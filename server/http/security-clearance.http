@@ -70,6 +70,6 @@ DELETE {{url}}/2 HTTP/1.1
 
 DELETE {{url}}/999 HTTP/1.1
 
-### [ ] For DELETE return a 400 if the security clearance is in use
+### [X] For DELETE return a 400 if the security clearance is in use
 
 DELETE {{url}}/1 HTTP/1.1

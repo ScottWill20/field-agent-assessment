@@ -9,8 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -66,7 +65,6 @@ public class AliasServiceTest {
         mockAlias.setAliasId(0);
         mockAlias.setPersona("Hawkeye");
 
-
         Result<Alias> actual = service.add(alias);
         assertEquals(ResultType.SUCCESS, actual.getType());
         assertEquals(alias, actual.getPayload());
@@ -95,8 +93,6 @@ public class AliasServiceTest {
         Result<Alias> actual = service.update(alias);
         assertEquals(ResultType.SUCCESS, actual.getType());
     }
-
-
 
     Alias makeAlias() {
         Alias alias = new Alias();

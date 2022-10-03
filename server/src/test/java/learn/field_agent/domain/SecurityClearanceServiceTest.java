@@ -83,6 +83,40 @@ public class SecurityClearanceServiceTest {
 
     }
 
+    @Test
+    void shouldUpdate() {
+        SecurityClearance securityClearance = makeSecurityClearance();
+        securityClearance.setName("Super Top Secret");
+
+        when(repository.update(securityClearance)).thenReturn(true);
+
+        Result<SecurityClearance> actual = service.update(securityClearance);
+
+        assertEquals(ResultType.SUCCESS, actual.getType());
+    }
+
+    @Test
+    void shouldNotDeleteWhenInUse() {
+        SecurityClearance securityClearance = makeSecurityClearance();
+        securityClearance.setSecurityClearanceId(1);
+
+        when(repository.deleteById(securityClearance.getSecurityClearanceId())).thenReturn(true);
+
+        Result<SecurityClearance> actual = service.deleteById(securityClearance.getSecurityClearanceId());
+        assertEquals(ResultType.SUCCESS, actual.getType());
+    }
+
+    @Test
+    void shouldDelete() {
+        SecurityClearance securityClearance = makeSecurityClearance();
+        securityClearance.setSecurityClearanceId(2);
+
+        when(repository.deleteById(securityClearance.getSecurityClearanceId())).thenReturn(true);
+
+        Result<SecurityClearance> actual = service.deleteById(securityClearance.getSecurityClearanceId());
+        assertEquals(ResultType.SUCCESS, actual.getType());
+    }
+
 
 
     SecurityClearance makeSecurityClearance() {

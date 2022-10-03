@@ -68,6 +68,13 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
         assertFalse(repository.update(securityClearance));
     }
 
+    @Test
+    void shouldDelete() {
+        SecurityClearance securityClearance = makeSecurityClearance();
+        securityClearance.setName("Three Test");
+        assertTrue(repository.deleteById(3));
+        assertFalse(repository.deleteById(1));
+    }
 
 
     private SecurityClearance makeSecurityClearance() {

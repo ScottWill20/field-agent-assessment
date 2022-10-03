@@ -135,15 +135,6 @@ select concat(agent.first_name," ",agent.last_name),
 from agent
 inner join alias
 where alias.agent_id = agent.agent_id;
-
--- insert into alias (`name`, persona, agent_id)
--- values
--- ("Hazel Sauven","Wolverine",1),
--- ("Winn Puckrin","The Thing",3),
--- ("Urban Carwithen","Mr. Fantastic",6),
--- ("Urban Carwithen","Storm",6),
--- ("Ulises Mihammad","Green Lantern",7);
-
 	
 insert into agency_agent 
 (agency_id, agent_id, identifier, security_clearance_id, activation_date)

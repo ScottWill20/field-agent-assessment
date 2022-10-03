@@ -271,7 +271,7 @@ _Refer back to the "Spring Profiles, Error Handling, and CORS" lesson in the LMS
 * [X] For PUT return a 400 if the security clearance fails one of the domain rules
 * [X] DELETE a security clearance that is not in use by ID
 * [X] For DELETE return a 404 if the security clearance is not found
-* [ ] For DELETE return a 400 if the security clearance is in use
+* [X] For DELETE return a 400 if the security clearance is in use
 
 ### Alias
 
@@ -287,5 +287,5 @@ _Refer back to the "Spring Profiles, Error Handling, and CORS" lesson in the LMS
 
 ### Global Error Handling
 
-* [ ] Return a specific data integrity error message for data integrity issues
-* [ ] Return a general error message for issues other than data integrity
+* [X] Return a specific data integrity error message for data integrity issues
+* [X] Return a general error message for issues other than data integrity

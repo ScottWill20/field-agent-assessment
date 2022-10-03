@@ -64,6 +64,12 @@ public class SecurityClearanceService {
     public Result<SecurityClearance> deleteById(int securityClearanceId) {
         Result<SecurityClearance> result = new Result<>();
 
+        if (repository.countClearancesInAgencyAgent(securityClearanceId) >= 1) {
+            String msg = String.format("securityClearanceId: %s, is in use", securityClearanceId);
+            result.addMessage(msg, ResultType.INVALID);
+            return result;
+        }
+
         if (!repository.deleteById(securityClearanceId)) {
             String msg = String.format("securityClearanceId: %s, not found", securityClearanceId);
             result.addMessage(msg, ResultType.NOT_FOUND);
