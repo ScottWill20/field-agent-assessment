@@ -2,12 +2,14 @@ package learn.field_agent.domain;
 
 import learn.field_agent.data.AgentRepository;
 import learn.field_agent.models.Agent;
+import learn.field_agent.models.SecurityClearance;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
