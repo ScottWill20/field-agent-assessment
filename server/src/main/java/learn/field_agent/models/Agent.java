@@ -15,7 +15,7 @@ public class Agent {
     private List<AgentAgency> agencies = new ArrayList<>();
 
     // new field for getting agent aliases
-    private List<Alias> aliases;
+    private List<Alias> aliases = new ArrayList<>();
 
     public int getAgentId() {
         return agentId;
@@ -74,7 +74,11 @@ public class Agent {
     }
 
     // new getter and setter for Alias
-    public List<Alias> getAliases() {return new ArrayList<>(aliases);}
-    public void setAliases(List<Alias> aliases) { this.aliases = aliases; }
+    public List<Alias> getAliases() {
+        return new ArrayList<>(aliases);
+    }
+    public void setAliases(List<Alias> aliases) {
+        this.aliases = aliases;
+    }
 
 }

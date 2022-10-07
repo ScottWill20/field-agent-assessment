@@ -1,0 +1,35 @@
+/* * {
+    border: 1px solid grey; 
+} */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.8rem;
+}
+
+input, select, button{
+    font-size: 1.8rem !important;
+}
+h1{
+    font-size: 3.5rem;
+    text-align: center;
+    margin: 2% 0;
+}
+h2{
+    font-size: 3rem;
+    margin: 2% 0;
+}
+table {
+    width: 100%;
+    margin-top: 2%;
+}
+.btnColumn{
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+td{
+    margin: 2% 0;
+}
