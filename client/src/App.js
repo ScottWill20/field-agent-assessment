@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+// import Navigation from ".components/Navigation";
+import FieldAgentList from "./components/FieldAgentList";
+import FieldAgentForm from "./components/FieldAgentForm";
+import NotFound from "./components/NotFound";
+
+function App () {
+  return(
+    <Router>
+        <h1>Welcome To The Solar Farm</h1>
+        {/* <Navigation /> */}
+        <Switch>
+          <Route path="/" exact>
+            <FieldAgentList />
+          </Route>
+          <Route path={["/agents/add", "/agents/edit/:agentId"]}>
+            <FieldAgentForm />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+    </Router>
   );
 }
-
 export default App;

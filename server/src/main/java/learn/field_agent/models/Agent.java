@@ -15,7 +15,7 @@ public class Agent {
     private List<AgentAgency> agencies = new ArrayList<>();
 
     // new field for getting agent aliases
-    private List<Alias> aliases;
+    private List<Alias> aliases = new ArrayList<>();
 
     public int getAgentId() {
         return agentId;

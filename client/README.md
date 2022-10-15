@@ -1,20 +1,21 @@
+
 # React Field Agent Assessment
 
 ## Tasks
 
 _TODO_ Add time estimates to each of the top-level tasks
 
-* [ ] Continue working in the repo from last week's Field Agent API repository (#.# hours)
-  * [ ] Add a README in the `client` folder with the contents from this file
+* [X] Continue working in the repo from last week's Field Agent API repository (#.# hours)
+  * [X] Add a README in the `client` folder with the contents from this file
 
-* [ ] Review the requirements (#.# hours)
+* [X] Review the requirements (#.# hours)
 
-* [ ] Identify any research that I need to do (#.# hours)
+* [X] Identify any research that I need to do (#.# hours)
 
 ### Part 1: Project Setup and Agents List
 
-* [ ] Create a new React project with CRA (create-react-app)
-  * [ ] Remove the cruft (refer back to the Components and JSX exercise for instructions)
+* [X] Create a new React project with CRA (create-react-app)
+  * [X] Remove the cruft (refer back to the Components and JSX exercise for instructions)
 
 * [ ] Add Bootstrap (or other CSS framework) to the `public/index.html` file
   * [ ] Add a link to the Bootstrap CSS using the [CDN from the official docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/#css)
