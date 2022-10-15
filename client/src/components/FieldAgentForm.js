@@ -15,16 +15,16 @@ function FieldAgentForm() {
     const [editAgentId, setEditAgentId] = useState(0);
     const [errors, setErrors] = useState([]);
     const history = useHistory();
-    const { id } = useParams();
+    const { agentId } = useParams();
 
     useEffect(() => {
-        if(id) {
-            setEditAgentId(id);
-        fetch(`${endpoint}/${id}`)
+        if(agentId) {
+            setEditAgentId(agentId);
+        fetch(`${endpoint}/${agentId}`)
         .then((response) => response.json())
         .then((data) => setAgent(data));
         }
-    }, [id]);
+    }, [agentId]);
 
     const handleChange = (event) => {
         const newAgent = {...agent};
@@ -80,24 +80,23 @@ function FieldAgentForm() {
             },
             body: JSON.stringify(agent),
         };
-        
         fetch(endpoint, init)
-        .then(response => {
+        .then((response) => {
             if (response.status === 201 || response.status === 400) {
                 return response.json();
             } else {
                 return Promise.reject(`Unexpected status ${response.status}`); 
             }
         })
-        .then(data => {
-            if(data.id) {
+        .then((data) => {
+            if(data.agentId) {
                 resetState();
                 history.push("/");
             } else {
                 setErrors(data);
             }
         })
-        .catch(error => console.log(error))
+        .catch((error) => console.log(error))
     };
 
     const resetState = () => {
@@ -180,7 +179,9 @@ function FieldAgentForm() {
                 type="submit">
                     {editAgentId > 0 ? 'Update Agent' : 'Add Agent'}
                 </button>
-                <Link className="btn btn-warning" to="/">Cancel</Link>
+                <Link className="btn btn-warning" to="/">
+                    Cancel
+                    </Link>
             </div>
         </form>
          </>

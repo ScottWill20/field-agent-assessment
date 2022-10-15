@@ -8,7 +8,7 @@ import NotFound from "./components/NotFound";
 function App () {
   return(
     <Router>
-        <h1>Welcome To The Solar Farm</h1>
+        <h1>Field Agents</h1>
         {/* <Navigation /> */}
         <Switch>
           <Route path="/" exact>

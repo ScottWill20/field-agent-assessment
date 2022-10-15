@@ -44,7 +44,7 @@ function FieldAgentList() {
         <>
         <h2>Field Agents</h2>
 
-        <Link className="btn btn-primary" to = "/agents/add">
+        <Link className="btn btn-primary" to="/agents/add">
             Add Field Agent
         </Link>
         <table>
