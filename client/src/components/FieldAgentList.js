@@ -64,7 +64,7 @@ function FieldAgentList() {
                         <td>{agent.firstName}</td>
                         <td>{agent.middleName}</td>
                         <td>{agent.lastName}</td>
-                        <td>{agent.dateOfBirth}</td>
+                        <td>{agent.dob}</td>
                         <td>{agent.heightInInches}</td>
                         <td className="buttonContainer">
                             <Link className="btn btn-primary" 

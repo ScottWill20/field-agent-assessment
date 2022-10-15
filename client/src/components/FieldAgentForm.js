@@ -108,7 +108,7 @@ function FieldAgentForm() {
 
     return (
     <>
-        <h2>{editAgentId > 0 ? 'Update Agent' : 'Add Agent'}</h2>
+        <h2>{editAgentId > 0 ? "Update Agent" : "Add Agent"}</h2>
 
         {errors.length > 0 && (
                 <div>
@@ -159,9 +159,9 @@ function FieldAgentForm() {
                 <input id="dob" 
                 name="dob" 
                 type="date" 
+                className="form-control"
                 value={agent.dob}
                 onChange={handleChange}   
-                required 
                 />
             </div>
             <div className="form-group">
@@ -169,6 +169,7 @@ function FieldAgentForm() {
                 <input id="heightInInches" 
                 name="heightInInches" 
                 type="number" 
+                className="form-control"
                 value={agent.heightInInches}
                 onChange={handleChange}   
                 required 
