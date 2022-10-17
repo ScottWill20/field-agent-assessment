@@ -47,6 +47,10 @@ function FieldAgentList() {
         <Link className="btn btn-primary" to="/agents/add">
             Add Field Agent
         </Link>
+        <Link className="btn btn-secondary" to="/">
+            Go Home
+        </Link>
+
         <table>
             <thead>
                 <tr>

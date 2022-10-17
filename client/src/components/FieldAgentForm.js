@@ -64,7 +64,7 @@ function FieldAgentForm() {
         .then(data => {
             if (!data) {
                 resetState();
-                history.push("/");
+                history.push("/agents");
             } else {
                 setErrors(data);
             }
@@ -91,7 +91,7 @@ function FieldAgentForm() {
         .then((data) => {
             if(data.agentId) {
                 resetState();
-                history.push("/");
+                history.push("/agents");
             } else {
                 setErrors(data);
             }
@@ -179,7 +179,7 @@ function FieldAgentForm() {
                 type="submit">
                     {editAgentId > 0 ? 'Update Agent' : 'Add Agent'}
                 </button>
-                <Link className="btn btn-warning" to="/">
+                <Link className="btn btn-warning" to="/agents">
                     Cancel
                     </Link>
             </div>
