@@ -9,7 +9,6 @@ function App () {
   return(
     <Router>
         <h1>Field Agents</h1>
-        {/* <Navigation /> */}
         <Switch>
           <Route path="/" exact>
             <FieldAgentList />
