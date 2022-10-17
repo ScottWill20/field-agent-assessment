@@ -42,7 +42,7 @@ function FieldAgentForm() {
     };
 
     const updateAgent = () => {
-        agent.id = editAgentId;
+        agent.agentId = editAgentId;
         const init = {
             method: 'PUT',
             headers: {
@@ -114,7 +114,7 @@ function FieldAgentForm() {
                     <h3>The following errors occured:</h3>
                     <ul>
                         {errors.map((error) => {
-                            return <li>{error}</li>;
+                            return <li key={error}>{error}</li>;
                         })}
                     </ul>
                 </div>
